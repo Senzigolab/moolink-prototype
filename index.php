@@ -25,6 +25,42 @@
         #produk {
             background: transparent !important;
         }
+        /* =========================================
+       KHUSUS TAMPILAN HP (MOBILE RESPONSIVE)
+       Kode di bawah ini HANYA jalan di layar kecil
+       ========================================= */
+    @media (max-width: 768px) {
+        
+        /* 1. Judul Hero (Susu Segar...) dikecilkan */
+        .hero-section h1 {
+            font-size: 2.5rem !important; /* Ukuran font lebih pas di HP */
+        }
+        
+        /* 2. Mengurangi jarak kosong (padding) biar tidak boros layar */
+        .hero-section {
+            padding: 50px 0 !important; /* Di PC 100px, di HP cukup 50px */
+            min-height: auto; /* Hilangkan paksaan tinggi */
+        }
+        
+        /* 3. Menata Ikon Keunggulan (Glass Box, dll) */
+        /* Biar ikonnya tidak terlalu raksasa tapi tetap jelas */
+        .hero-section .bi {
+            font-size: 2rem !important;
+        }
+        .hero-section p.small {
+            font-size: 0.7rem; /* Teks di bawah ikon diperkecil sedikit */
+        }
+        
+        /* 4. Kartu Produk (Beri jarak antar kartu saat berjejer ke bawah) */
+        .card-product {
+            margin-bottom: 20px; /* Biar gak dempet-dempetan */
+        }
+
+        /* 5. Navbar (Menu Atas) */
+        .navbar-brand {
+            font-size: 1.2rem; /* Nama Moo Link agak dikecilkan dikit */
+        }
+    }
     </style>
 </head>
 <body>
