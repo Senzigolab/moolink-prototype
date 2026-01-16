@@ -7,107 +7,76 @@
     <title>Moo Link - Pasteurized Living Milk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* BACKGROUND UTAMA: Gambar Ahli Gizi & Sapi */
-        body {
-            background: linear-gradient(rgba(255,255,255, 0.8), rgba(255,255,255, 0.7)), url('bg.jpg') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-attachment: fixed !important;
-            background-repeat: no-repeat !important;
-        }
-        
-        /* Agar tulisan tetap terbaca jelas */
-        .hero-section {
-            background: transparent !important;
-        }
-        #produk {
-            background: transparent !important;
-        }
-        /* =========================================
-       KHUSUS TAMPILAN HP (MOBILE RESPONSIVE)
-       Kode di bawah ini HANYA jalan di layar kecil
-       ========================================= */
-    @media (max-width: 768px) {
-        
-        /* 1. Judul Hero (Susu Segar...) dikecilkan */
-        .hero-section h1 {
-            font-size: 2.5rem !important; /* Ukuran font lebih pas di HP */
-        }
-        
-        /* 2. Mengurangi jarak kosong (padding) biar tidak boros layar */
-        .hero-section {
-            padding: 50px 0 !important; /* Di PC 100px, di HP cukup 50px */
-            min-height: auto; /* Hilangkan paksaan tinggi */
-        }
-        
-        /* 3. Menata Ikon Keunggulan (Glass Box, dll) */
-        /* Biar ikonnya tidak terlalu raksasa tapi tetap jelas */
-        .hero-section .bi {
-            font-size: 2rem !important;
-        }
-        .hero-section p.small {
-            font-size: 0.7rem; /* Teks di bawah ikon diperkecil sedikit */
-        }
-        
-        /* 4. Kartu Produk (Beri jarak antar kartu saat berjejer ke bawah) */
-        .card-product {
-            margin-bottom: 20px; /* Biar gak dempet-dempetan */
-        }
-
-        /* 5. Navbar (Menu Atas) */
-        .navbar-brand {
-            font-size: 1.2rem; /* Nama Moo Link agak dikecilkan dikit */
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbar-on-scroll">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-box-seam-fill" style="color: var(--moo-green);"></i> Moo<span style="color:black;">Link</span>
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="logo-moolink-putih-tanpa-teks.png" alt="MooLink Logo" class="logo-nav"> 
+                Moo<span>Link</span>
             </a>
-            <button class="btn btn-sm btn-outline-primary ms-auto">Masuk Mitra</button>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center gap-3 py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#hero-cinematic">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="track.php">Lacak Susu</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-sm btn-outline-primary px-4 rounded-pill">Masuk Mitra</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-3">Susu Segar, <span style="color: var(--moo-blue);">Jujur</span>, & Terlacak.</h1>
-            <p class="lead text-muted mb-4">
-                Nikmati <em>Pasteurized Living Milk</em> langsung dari peternak Sleman. <br> 
-                Pesan H-1, Perah Subuh, Antar Pagi. <strong>Zero Waste.</strong>
-            </p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#produk" class="btn btn-moo-primary">Pesan Sekarang (H-1)</a>
-                <a href="track.php?batch=MOO-2026-001" class="btn btn-outline-dark"><i class="bi bi-qr-code-scan"></i> Cek Asal Susu</a>
+    <section id="hero-cinematic" class="d-flex align-items-center text-white">
+        
+        <div class="overlay-dark"></div>
+
+        <div class="container position-relative z-2 text-center">
+            <div class="row justify-content-center">
+                <div class="mb-4"> 
+                    <img src="logo-moolink-putih.png" alt="MooLink Logo" class="logo-hero">
+                    
+                    <h1 class="display-3 fw-bold mb-4">
+                        Kemurnian yang Hidup.
+                    </h1>
+                    
+                    <p class="lead mb-5 px-md-5 opacity-75">
+                        Bukan sekadar susu. Ini adalah komitmen kami menjaga nutrisi alami dari peternakan langsung ke pintu keluarga terpilih Anda.
+                    </p>
+
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#produk" class="btn btn-moo-primary btn-lg rounded-pill px-4">
+                            Lihat Koleksi <i class="bi bi-arrow-down-short"></i>
+                        </a>
+                        
+                        <a href="track.php" class="btn btn-outline-light btn-lg rounded-pill px-4">
+                            Lacak Susu
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="row mt-5 justify-content-center">
-                <div class="col-4 col-md-2">
-                    <i class="bi bi-shield-check fs-1 text-primary"></i>
-                    <p class="small fw-bold mt-2">Glass Box<br>Traceability</p>
-                </div>
-                <div class="col-4 col-md-2">
-                    <i class="bi bi-droplet-half fs-1 text-success"></i>
-                    <p class="small fw-bold mt-2">Living Milk<br>Nutrisi Utuh</p>
-                </div>
-                <div class="col-4 col-md-2">
-                    <i class="bi bi-clock-history fs-1 text-dark"></i>
-                    <p class="small fw-bold mt-2">Pre-Order<br>Dijamin Baru</p>
-                </div>
-            </div>
+        </div> 
+
+        <div class="scroll-indicator position-absolute start-50 translate-middle-x text-center z-2 scroll-indicator-wrapper">
+             <small class="text-white-50 scroll-text">Scroll untuk eksplorasi</small><br>
+             <i class="bi bi-chevron-double-down fs-2 text-white fade-down-animation"></i>
         </div>
+
     </section>
 
     <section id="produk" class="py-5">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Pilih Ukuranmu</h2>
-                <p class="text-muted">Dukunganmu memberdayakan peternak lokal Cangkringan & Pakem.</p>
+                <p class="text-muted">Terimakasih sudah memberdayakan peternak lokal Cangkringan.</p>
             </div>
             
             <div class="row">
@@ -118,9 +87,9 @@
                 ?>
                 <div class="col-md-4 mb-4">
                     <div class="card card-product h-100 p-3">
-                        <div style="height: 200px; background-color: #f8f9fa; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow:hidden;">
+                        <div class="product-img-wrapper">
                             <?php if(file_exists($row['gambar'])): ?>
-                                <img src="<?php echo $row['gambar']; ?>" alt="" style="width:100%; height:100%; object-fit:cover;">
+                                <img src="<?php echo $row['gambar']; ?>" alt="" class="product-img-fit">
                             <?php else: ?>
                                 <i class="bi bi-cup-straw fs-1 text-muted"></i>
                             <?php endif; ?>
@@ -134,14 +103,11 @@
                                 date_default_timezone_set('Asia/Jakarta');
                                 $jam_sekarang = date('H');
 
-                                    if ($jam_sekarang >= 21) { 
-                                            // Jika malam (tutup)
-                                            echo '<button class="btn btn-secondary w-100" disabled>PO Besok Tutup (Lewat 21.00)</button>';
-                                            } else {
-                                            // Jika siang/pagi (buka) - Perhatikan tanda backslash (\) di bawah ini
-                                            echo '<button class="btn btn-moo-primary w-100" onclick="alert(\'✅ Berhasil! Susu akan diperah subuh nanti dan dikirim pagi hari.\')">
-                                            <i class="bi bi-cart-plus"></i> Pre-Order Besok </button>';
-                                        }
+                                if ($jam_sekarang >= 21) { 
+                                    echo '<button class="btn btn-secondary w-100" disabled>PO Besok Tutup (Lewat 21.00)</button>';
+                                } else {
+                                    echo '<button class="btn btn-moo-primary w-100" data-bs-toggle="modal" data-bs-target="#modalOrder"><i class="bi bi-cart-plus"></i> Pre-Order Besok </button>';
+                                }
                             ?>
                         </div>
                     </div>
@@ -151,8 +117,55 @@
         </div>
     </section>
 
-    <footer class="py-4 text-center border-top">
+   <footer class="py-4 text-center border-top">
         <p class="mb-0 text-muted small">&copy; 2026 Moo Link. Solusi Rantai Pasok Susu Hyperlocal.</p>
     </footer>
+
+    <div class="modal fade" id="modalOrder" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header border-0 bg-light rounded-top-4">
+                    <h5 class="modal-title fw-bold">🥛 Data Penerima Susu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Nama Penerima</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Contoh: Erynd">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Nomor WhatsApp</label>
+                            <input type="number" class="form-control rounded-3" placeholder="08xxxx">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Alamat Pengiriman (Sleman Area)</label>
+                            <textarea class="form-control rounded-3" rows="2" placeholder="Jalan Kaliurang KM..."></textarea>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="button" class="btn btn-primary btn-lg rounded-pill" onclick="alert('Pesanan Terkirim ke Sistem! (Simulasi)')">
+                                Kirim Pesanan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        window.onscroll = function() {
+            var nav = document.querySelector('.navbar-on-scroll');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('scrolled');
+                nav.classList.remove('navbar-dark');
+            } else {
+                nav.classList.remove('scrolled');
+                nav.classList.add('navbar-dark');
+            }
+        }
+    </script>
 </body>
 </html>
