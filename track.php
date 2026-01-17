@@ -4,8 +4,25 @@ $kode = isset($_GET['batch']) ? $_GET['batch'] : '';
 $data = null;
 
 if($kode) {
+    // 1. Coba Ambil dari Database
     $q = "SELECT * FROM batches WHERE batch_code = '$kode'";
-    $data = mysqli_fetch_assoc(mysqli_query($conn, $q));
+    $result = mysqli_query($conn, $q);
+    if($result && mysqli_num_rows($result) > 0){
+        $data = mysqli_fetch_assoc($result);
+    }
+    
+    // 2. BACKUP DEMO (Jaga-jaga untuk Presentasi)
+    // Jika Database kosong/error, ketik ?batch=DEMO di link untuk memunculkan ini
+    if(!$data && strtoupper($kode) == 'DEMO'){
+        $data = [
+            'batch_code' => 'DEMO-LIVE-2026',
+            'peternak' => 'Pak Hartono (Mitra 01)',
+            'lokasi' => 'Turgo, Lereng Merapi',
+            'jam_perah' => date('Y-m-d H:i:s'),
+            'suhu_pasteurisasi' => '72',
+            'nutrisi_protein' => '98% (Intact/Utuh)'
+        ];
+    }
 }
 ?>
 
@@ -17,7 +34,7 @@ if($kode) {
     <title>Lacak Susu - Moo Link</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body class="bg-tracking-page">
 
@@ -68,7 +85,7 @@ if($kode) {
 
                                 <div class="collapse mt-3" id="petaLokasi">
                                      <div class="rounded-3 overflow-hidden shadow-sm border">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31640.97087612711!2d110.4355!3d-7.6335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a670000000001%3A0x5027a76e3568600!2sCangkringan%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.4276995527293!2d110.42596267476436!3d-7.637068892378788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5debf9c5ec93%3A0x3db75235fa4e145a!2sRembulan%20merapi%20farm!5e0!3m2!1sid!2sid!4v1768664061239!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                     </div>
                                     <small class="text-muted fst-italic mt-1 d-block text-center" style="font-size: 10px;">*Lokasi peternakan mitra di Cangkringan, Sleman.</small>
                                 </div>
@@ -81,7 +98,18 @@ if($kode) {
                                     <div class="badge bg-danger rounded-pill px-3 py-2">
                                         <i class="bi bi-thermometer-half"></i> <?php echo $data['suhu_pasteurisasi']; ?>°C
                                     </div>
-                                    <small class="text-muted">Suhu dijaga agar enzim tetap hidup.</small>
+                                    <small class="text-muted">Enzim bioaktif terjaga.</small>
+                                </div>
+                            </div>
+
+                            <div class="trace-item">
+                                <h6 class="fw-bold text-primary mb-1">Distribusi (Cold Chain)</h6>
+                                <p class="mb-1 text-dark">Dalam Perjalanan ke Konsumen</p>
+                                <div class="d-flex align-items-center gap-2 mt-2">
+                                    <div class="badge bg-info text-dark rounded-pill px-3 py-2">
+                                        <i class="bi bi-snow"></i> Suhu Box: 4°C
+                                    </div>
+                                    <small class="text-muted">Aman dari bakteri.</small>
                                 </div>
                             </div>
 
@@ -90,12 +118,13 @@ if($kode) {
                                 
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between small mb-1">
-                                        <span class="fw-bold">Protein Murni</span>
-                                        <span class="text-success fw-bold">98% (Excellent)</span>
+                                        <span class="fw-bold">Bioaktif (Lactoferrin & IgG)</span>
+                                        <span class="text-success fw-bold"><?php echo $data['nutrisi_protein']; ?></span>
                                     </div>
                                     <div class="nutrient-bar">
                                         <div class="nutrient-fill" style="width: 98%;"></div>
                                     </div>
+                                    <small class="text-muted" style="font-size: 10px;">*Protein imun tidak rusak (Non-Denatured).</small>
                                 </div>
 
                                 <div class="mb-1">
@@ -110,7 +139,9 @@ if($kode) {
                                 </div>
                             </div>
 
-                        </div> <div class="d-grid gap-2 mt-5">
+                        </div> 
+                        
+                        <div class="d-grid gap-2 mt-5">
                             <button class="btn btn-dark rounded-pill py-2">
                                 <i class="bi bi-file-earmark-pdf"></i> Unduh Sertifikat Digital
                             </button>
@@ -122,7 +153,7 @@ if($kode) {
                     </div>
                     
                     <div class="card-footer bg-light text-center py-3 border-top">
-                        <small class="text-muted">MooLink Technology &copy; 2026</small>
+                        <small class="text-muted">MooLink Technology © 2026</small>
                     </div>
                 </div>
                 

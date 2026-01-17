@@ -87,6 +87,8 @@
                 ?>
                 <div class="col-md-4 mb-4">
                     <div class="card card-product h-100 p-3">
+                        <div class="position-absolute top-0 end-0 p-3 z-2"><span class="badge bg-success rounded-pill shadow-sm"><i class="bi bi-recycle"></i> Returnable</span>
+                        </div>
                         <div class="product-img-wrapper">
                             <?php if(file_exists($row['gambar'])): ?>
                                 <img src="<?php echo $row['gambar']; ?>" alt="" class="product-img-fit">
